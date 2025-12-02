@@ -1,0 +1,6 @@
+User-agent: *
+Disallow: /admin/
+Disallow: /backup/
+Disallow: /config/
+Disallow: /secret-area/
+# Флаг для задания 3: FLAG{ROBOTS_TXT_SHOWS_SECRET_PATHS}
