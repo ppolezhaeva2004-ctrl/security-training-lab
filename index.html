@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Учебный портал компании "ЗащитаТест"</title>
+    <!-- 
+      СЕКРЕТНЫЙ КОММЕНТАРИЙ ДЛЯ АДМИНИСТРАТОРОВ:
+      Флаг для задания 1: FLAG{HTML_COMMENTS_ARE_VISIBLE}
+      Тестовый API-ключ: TEST_KEY_12345_DO_NOT_USE_IN_PRODUCTION
+      Временный пароль админки: AdminTempPass2024!
+    -->
+</head>
+<body>
+    <h1>Добро пожаловать на учебный портал</h1>
+    <p>Это тренировочный сайт для обучения информационной безопасности.</p>
+    
+    <!-- Форма с потенциальной уязвимостью -->
+    <div style="background: #f0f0f0; padding: 20px; margin: 20px;">
+        <h2>Тестовая форма входа</h2>
+        <form action="/login" method="GET">
+            <input type="text" name="username" placeholder="Логин">
+            <input type="password" name="password" placeholder="Пароль">
+            <input type="submit" value="Войти">
+        </form>
+        <p><small>Примечание: форма использует GET-метод (небезопасно!)</small></p>
+    </div>
+
+    <!-- Ссылка с потенциальным XSS -->
+    <div>
+        <h3>Поиск по сайту:</h3>
+        <p>Попробуйте: <a href="/search?q=<script>alert('test')</script>">Пример поискового запроса</a></p>
+    </div>
+
+    <!-- JavaScript с "секретом" -->
+    <script>
+        // Конфигурационные данные (НЕ ДЕЛАЙТЕ ТАК В РЕАЛЬНЫХ ПРОЕКТАХ!)
+        const apiConfig = {
+            endpoint: "https://api.training-lab.com/v1",
+            apiKey: "LIVE_SK_TEST_789XYZ_INSECURE_STORAGE",
+            debugMode: true
+        };
+        
+        // Функция с уязвимостью к XSS
+        function showSearchResults(query) {
+            document.getElementById('results').innerHTML = "Результаты для: " + query;
+        }
+    </script>
+
+    <!-- Скрытый div с дополнительной информацией -->
+    <div style="display: none;">
+        <p>Скрытая техническая информация:</p>
+        <ul>
+            <li>Версия CMS: TrainingCMS 1.0</li>
+            <li>Внутренний IP базы данных: 192.168.1.100</li>
+            <li>Тестовый SSH ключ: ssh-rsa AAAAB3NzaC1yc2E... test@training-lab</li>
+        </ul>
+        <!-- Флаг для задания 2: FLAG{HIDDEN_DIV_IS_NOT_SECURE} -->
+    </div>
+</body>
+</html>
